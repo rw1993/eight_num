@@ -1,0 +1,27 @@
+from node import node
+import UserString as us
+from functions import expand
+end_state=us.MutableString('1238 4765')
+open_list=[]
+closed_list=[]
+count_id=0
+s=node(node_id=count_id,node_state=us.MutableString('128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284128412841284 3765'),father_id=-1,deep=0)
+count_id+=1
+open_list.append(s)
+findn=None
+while(len(open_list)>0):
+    bestf=99999999
+    index=-1
+    for n in open_list:
+        if n.w+n.deep<bestf:
+           index=open_list.index(n)
+           bestf=n.w+n.deep
+    n=open_list[index]
+    print n.w
+    if n.w==0:
+        print "find"
+        findn=n
+        break
+    open_list.remove(n)
+    closed_list.append(n)
+    expand(n,open_list,closed_list)
